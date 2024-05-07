@@ -1,0 +1,8 @@
+<resources>
+    <string name="greeting">Hola, %1$s</string>
+    <string name="busca_aqui">Busca aquí</string>
+    <string name="ciencia_ficci_n_y_fantas_a">Ciencia ficción y Fantasía</string>
+    <string name="best_sellers">Best Sellers</string>
+    <string name="recomendados_para_ti">Recomendados para ti</string>
+    <string name="menu_icon">Icono del menú</string>
+</resources>

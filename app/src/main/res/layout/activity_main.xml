@@ -1,0 +1,178 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/greeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/greeting"
+        android:textColor="#C32A2A"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/search_bar"
+        android:layout_width="304dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_search_bar"
+        android:drawablePadding="12dp"
+        android:hint="@string/busca_aqui"
+        android:inputType="text"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/greeting" />
+
+    <LinearLayout
+        android:id="@+id/categories_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="116dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_bar">
+
+        <Button
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/transparent_button"
+            android:foreground="@drawable/button_foreground"
+            android:text="Inicio"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="@drawable/transparent_button"
+            android:foreground="@drawable/button_foreground"
+            android:text="Novela"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:background="@drawable/transparent_button"
+            android:foreground="@drawable/button_foreground"
+            android:text="Autoayuda"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <Button
+            android:layout_width="102dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/transparent_button"
+            android:foreground="@drawable/button_foreground"
+            android:text="@string/ciencia_ficci_n_y_fantas_a"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/best_sellers_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/best_sellers"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categories_bar" />
+
+    <ImageView
+        android:id="@+id/best_seller_book1"
+        android:layout_width="100dp"
+        android:layout_height="143dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/libro1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/best_sellers_title"
+        tools:srcCompat="@drawable/libro2" />
+
+    <ImageView
+        android:id="@+id/best_seller_book2"
+        android:layout_width="100dp"
+        android:layout_height="143dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/libro2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/best_sellers_title" />
+
+    <ImageView
+        android:id="@+id/best_seller_book3"
+        android:layout_width="100dp"
+        android:layout_height="143dp"
+        android:layout_marginStart="292dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/libro3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/best_sellers_title"
+        tools:srcCompat="@drawable/libro3" />
+
+    <TextView
+        android:id="@+id/recommended_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="56dp"
+        android:text="@string/recomendados_para_ti"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/best_seller_book1" />
+
+    <ImageView
+        android:id="@+id/recommended_book1"
+        android:layout_width="100dp"
+        android:layout_height="143dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/libro4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recommended_title"
+        tools:srcCompat="@drawable/libro5" />
+
+    <ImageView
+        android:id="@+id/recommended_book2"
+        android:layout_width="100dp"
+        android:layout_height="143dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/libro5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recommended_title"
+        tools:srcCompat="@drawable/libro4" />
+
+    <ImageView
+        android:id="@+id/recommended_book3"
+        android:layout_width="100dp"
+        android:layout_height="143dp"
+        android:layout_marginStart="292dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/libro1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recommended_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
