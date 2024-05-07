@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
     <TextView
         android:id="@+id/greeting"
         android:layout_width="wrap_content"
@@ -25,6 +27,7 @@
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_search_bar"
+        android:drawableEnd="@drawable/baseline_image_search_24"
         android:drawablePadding="12dp"
         android:hint="@string/busca_aqui"
         android:inputType="text"
@@ -40,9 +43,10 @@
         android:id="@+id/categories_bar"
         android:layout_width="wrap_content"
         android:layout_height="116dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_bar">
 
@@ -99,80 +103,101 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/categories_bar" />
 
-    <ImageView
-        android:id="@+id/best_seller_book1"
-        android:layout_width="100dp"
-        android:layout_height="143dp"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/libro1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/best_sellers_title"
-        tools:srcCompat="@drawable/libro2" />
-
-    <ImageView
-        android:id="@+id/best_seller_book2"
-        android:layout_width="100dp"
-        android:layout_height="143dp"
+    <LinearLayout
+        android:id="@+id/best_sellers_books_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/libro2"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/best_sellers_title" />
+        app:layout_constraintTop_toBottomOf="@id/best_sellers_title">
 
-    <ImageView
-        android:id="@+id/best_seller_book3"
-        android:layout_width="100dp"
-        android:layout_height="143dp"
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/libro3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/best_sellers_title"
-        tools:srcCompat="@drawable/libro3" />
+        <ImageView
+            android:id="@+id/best_seller_book1"
+            android:layout_width="100dp"
+            android:layout_height="143dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="50dp"
+            android:src="@drawable/libro1" />
+
+        <ImageView
+            android:id="@+id/best_seller_book2"
+            android:layout_width="100dp"
+            android:layout_height="143dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/libro2" />
+
+        <ImageView
+            android:id="@+id/best_seller_book3"
+            android:layout_width="100dp"
+            android:layout_height="143dp"
+            android:src="@drawable/libro3" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/recommended_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="140dp"
         android:text="@string/recomendados_para_ti"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/best_seller_book1" />
+        app:layout_constraintTop_toBottomOf="@id/best_sellers_books_container" />
 
-    <ImageView
-        android:id="@+id/recommended_book1"
-        android:layout_width="100dp"
-        android:layout_height="143dp"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/libro4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recommended_title"
-        tools:srcCompat="@drawable/libro5" />
-
-    <ImageView
-        android:id="@+id/recommended_book2"
-        android:layout_width="100dp"
-        android:layout_height="143dp"
+    <LinearLayout
+        android:id="@+id/recommended_book1_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/libro5"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recommended_title"
-        tools:srcCompat="@drawable/libro4" />
+        app:layout_constraintTop_toBottomOf="@id/recommended_title">
 
-    <ImageView
-        android:id="@+id/recommended_book3"
-        android:layout_width="100dp"
-        android:layout_height="143dp"
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/libro1"
+        <ImageView
+            android:id="@+id/recommended_book1"
+            android:layout_width="100dp"
+            android:layout_height="143dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="50dp"
+            android:src="@drawable/libro4" />
+
+        <ImageView
+            android:id="@+id/recommended_book3"
+            android:layout_width="100dp"
+            android:layout_height="143dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/libro5" />
+
+        <ImageView
+            android:id="@+id/recommended_book2"
+            android:layout_width="100dp"
+            android:layout_height="143dp"
+            android:src="@drawable/libro1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/recommended_book2_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recommended_title" />
+        app:layout_constraintTop_toBottomOf="@id/recommended_book1_container">
+
+    </LinearLayout>
+
+    <!-- Tercer libro recomendado -->
+    <LinearLayout
+        android:id="@+id/recommended_book3_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recommended_book2_container">
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
