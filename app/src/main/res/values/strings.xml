@@ -5,4 +5,15 @@
     <string name="best_sellers">Best Sellers</string>
     <string name="recomendados_para_ti">Recomendados para ti</string>
     <string name="menu_icon">Icono del menú</string>
+    <string name="open">open\n</string>
+    <string name="close">close\n</string>
+    <string name="autoayuda">Autoayuda</string>
+    <string name="novela">Novela</string>
+    <string name="inicio">Inicio</string>
+    <string name="cerrar_sesi_n">Cerrar sesión</string>
+    <string name="las_vidas_dentro_de_tu_cabeza">Las vidas dentro de tu cabeza</string>
+    <string name="el_nombre_del_viento">El nombre del viento</string>
+    <string name="harry_potter_y_la_piedra_filosofal">Harry Potter y la piedra filosofal</string>
+    <string name="h_bitos_at_micos">Hábitos atómicos</string>
+    <string name="lo_que_el_viento_se_llev">Lo que el viento se llevó</string>
 </resources>

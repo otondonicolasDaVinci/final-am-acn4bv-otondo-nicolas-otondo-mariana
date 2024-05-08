@@ -1,203 +1,297 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
 
-    <TextView
-        android:id="@+id/greeting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/greeting"
-        android:textColor="#C32A2A"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/search_bar"
-        android:layout_width="304dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_search_bar"
-        android:drawableEnd="@drawable/baseline_image_search_24"
-        android:drawablePadding="12dp"
-        android:hint="@string/busca_aqui"
-        android:inputType="text"
-        android:paddingStart="16dp"
-        android:paddingTop="12dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/greeting" />
-
-    <LinearLayout
-        android:id="@+id/categories_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="116dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_bar">
-
-        <Button
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/transparent_button"
-            android:foreground="@drawable/button_foreground"
-            android:text="Inicio"
-            android:textColor="@color/black"
-            android:textSize="10sp" />
-
-        <Button
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_weight="1"
-            android:background="@drawable/transparent_button"
-            android:foreground="@drawable/button_foreground"
-            android:text="Novela"
-            android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.Toolbar>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:layout_weight="1"
-            android:background="@drawable/transparent_button"
-            android:foreground="@drawable/button_foreground"
-            android:text="Autoayuda"
-            android:textColor="@color/black"
-            android:textSize="10sp" />
 
-        <Button
-            android:layout_width="102dp"
+        <TextView
+            android:id="@+id/greeting"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/transparent_button"
-            android:foreground="@drawable/button_foreground"
-            android:text="@string/ciencia_ficci_n_y_fantas_a"
-            android:textColor="@color/black"
-            android:textSize="10sp" />
-    </LinearLayout>
+            android:layout_marginStart="@dimen/layout_margin_start"
+            android:layout_marginTop="@dimen/layout_margin_top"
+            android:text="@string/greeting"
+            android:textColor="@color/red"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/best_sellers_title"
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="@dimen/search_bar_width"
+            android:layout_height="@dimen/search_bar_height"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_search_bar"
+            android:drawableEnd="@drawable/baseline_image_search_24"
+            android:drawablePadding="12dp"
+            android:hint="@string/busca_aqui"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/greeting" />
+
+        <LinearLayout
+            android:id="@+id/categories_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="116dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_bar">
+
+            <Button
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/transparent_button"
+                android:foreground="@drawable/button_foreground"
+                android:text="@string/inicio"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:background="@drawable/transparent_button"
+                android:foreground="@drawable/button_foreground"
+                android:text="@string/novela"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:background="@drawable/transparent_button"
+                android:foreground="@drawable/button_foreground"
+                android:text="@string/autoayuda"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+
+            <Button
+                android:layout_width="102dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/transparent_button"
+                android:foreground="@drawable/button_foreground"
+                android:text="@string/ciencia_ficci_n_y_fantas_a"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/best_sellers_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/best_sellers"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/categories_bar" />
+
+        <LinearLayout
+            android:id="@+id/best_sellers_books_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/best_sellers_title">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/best_seller_book1"
+                    android:layout_width="100dp"
+                    android:layout_height="143dp"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="50dp"
+                    android:src="@drawable/libro1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/las_vidas_dentro_de_tu_cabeza"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/best_seller_book2"
+                    android:layout_width="100dp"
+                    android:layout_height="143dp"
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/libro2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/el_nombre_del_viento"
+                    android:layout_marginEnd="20dp"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/best_seller_book3"
+                    android:layout_width="100dp"
+                    android:layout_height="143dp"
+                    android:src="@drawable/libro3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/harry_potter_y_la_piedra_filosofal"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/recommended_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/recomendados_para_ti"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/best_sellers_books_container" />
+
+        <LinearLayout
+            android:id="@+id/recommended_book1_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recommended_title">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/recommended_book1"
+                    android:layout_width="100dp"
+                    android:layout_height="143dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/libro4" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/h_bitos_at_micos"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:id="@+id/recommended_book3"
+                    android:layout_width="100dp"
+                    android:layout_height="143dp"
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/libro5" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lo_que_el_viento_se_llev"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/recommended_book2"
+                    android:layout_width="100dp"
+                    android:layout_height="143dp"
+                    android:src="@drawable/libro1"
+                    android:layout_marginStart="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/las_vidas_dentro_de_tu_cabeza"
+                    android:layout_marginStart="5dp"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- NavigationView para el menú -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/best_sellers"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/categories_bar" />
-
-    <LinearLayout
-        android:id="@+id/best_sellers_books_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/best_sellers_title">
-
-        <ImageView
-            android:id="@+id/best_seller_book1"
-            android:layout_width="100dp"
-            android:layout_height="143dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="50dp"
-            android:src="@drawable/libro1" />
-
-        <ImageView
-            android:id="@+id/best_seller_book2"
-            android:layout_width="100dp"
-            android:layout_height="143dp"
-            android:layout_marginEnd="20dp"
-            android:src="@drawable/libro2" />
-
-        <ImageView
-            android:id="@+id/best_seller_book3"
-            android:layout_width="100dp"
-            android:layout_height="143dp"
-            android:src="@drawable/libro3" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/recommended_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="140dp"
-        android:text="@string/recomendados_para_ti"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/best_sellers_books_container" />
-
-    <LinearLayout
-        android:id="@+id/recommended_book1_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recommended_title">
-
-        <ImageView
-            android:id="@+id/recommended_book1"
-            android:layout_width="100dp"
-            android:layout_height="143dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="50dp"
-            android:src="@drawable/libro4" />
-
-        <ImageView
-            android:id="@+id/recommended_book3"
-            android:layout_width="100dp"
-            android:layout_height="143dp"
-            android:layout_marginEnd="20dp"
-            android:src="@drawable/libro5" />
-
-        <ImageView
-            android:id="@+id/recommended_book2"
-            android:layout_width="100dp"
-            android:layout_height="143dp"
-            android:src="@drawable/libro1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/recommended_book2_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recommended_book1_container">
-
-    </LinearLayout>
-
-    <!-- Tercer libro recomendado -->
-    <LinearLayout
-        android:id="@+id/recommended_book3_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recommended_book2_container">
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/drawer_menu" />
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -1,0 +1,11 @@
+<resources>
+    <dimen name="layout_margin_start">24dp</dimen>
+    <dimen name="layout_margin_top">64dp</dimen>
+    <dimen name="search_bar_width">304dp</dimen>
+    <dimen name="search_bar_height">43dp</dimen>
+    <dimen name="button_width">125dp</dimen>
+    <dimen name="button_height">44dp</dimen>
+    <dimen name="book_image_width">100dp</dimen>
+    <dimen name="book_image_height">143dp</dimen>
+    <dimen name="recommended_title_margin_top">40dp</dimen>
+</resources>
