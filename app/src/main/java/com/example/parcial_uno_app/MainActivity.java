@@ -1,6 +1,7 @@
 package com.example.parcial_uno_app;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -21,11 +22,21 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.parcial_uno_app.model.Book;
+import com.example.parcial_uno_app.model.adapter.BookAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    private RecyclerView booksRecyclerView;
+    private RecyclerView recommendedRecyclerView;
 
     @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility"})
     @Override
@@ -38,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
 
         ConstraintLayout constraintLayout = findViewById(R.id.activity_main);
         EditText searchBar = findViewById(R.id.search_bar);
@@ -84,69 +94,88 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        // Inicializa el DrawerLayout
-        drawerLayout = findViewById(R.id.drawer_layout);
-
-        // Configura el ActionBarDrawerToggle
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
-
-        // Establece el ActionBarDrawerToggle como el listener del DrawerLayout
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-
-        // Llama a syncState() para sincronizar el estado del indicador del menú hamburguesa con el estado del DrawerLayout
-        actionBarDrawerToggle.syncState();
 
 
-        // Inicializa la Toolbar
+
+        setupToolbar();
+        setupButtons();
+        setupRecyclerViews();
+        setupDrawer();
+    }
+
+
+    private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
-
-        // Establece la Toolbar como la barra de acciones de la actividad
         setSupportActionBar(toolbar);
-
-        // Elimina el título de la Toolbar
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-        // Hace la Toolbar transparente
-        toolbar.setBackgroundColor(Color.TRANSPARENT);
-
-        // Muestra el botón del menú hamburguesa en la barra de acciones
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.baseline_menu_24);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
-        // Obtén la referencia al TextView del saludo
+    private void setupButtons() {
         TextView greetingTextView = findViewById(R.id.greeting);
-
-        // Define el nombre del usuario
-        String userName = "Nicolas"; // Puedes obtener este valor de las preferencias del usuario o de cualquier otra fuente.
-
-        // Establece el texto del saludo con el nombre del usuario
+        String userName = "Nicolas";
         greetingTextView.setText(getString(R.string.greeting, userName));
+    }
 
+    private void setupRecyclerViews() {
+        booksRecyclerView = findViewById(R.id.books_recycler_view);
+        booksRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        List<Book> bestSellers = new ArrayList<>();
+        bestSellers.add(new Book("Las Vidas Dentro de tu Cabeza", "David Eagleman", "Una exploración fascinante del cerebro humano.", 4.7f, "$9.99", R.drawable.las_vidas_dentro_de_tu_cabeza));
+        bestSellers.add(new Book("Harry Potter", "J.K. Rowling", "Harry Potter y la piedra filosofal es el primer libro de la serie.", 4.9f, "$8.99", R.drawable.harry_potter_piedra));
+        bestSellers.add(new Book("Lo que el viento se llevó", "Margaret Mitchell", "La historia de amor más grande jamás contada.", 4.8f, "$7.99", R.drawable.viento_se_llevo));
+        bestSellers.add(new Book("El nombre del viento", "Patrick Rothfuss", "Una historia de aventuras y magia.", 4.6f, "$10.99", R.drawable.el_nombre_del_viento));
 
+        BookAdapter bestSellersAdapter = new BookAdapter(bestSellers, this::openBookDetail);
+        booksRecyclerView.setAdapter(bestSellersAdapter);
 
+        recommendedRecyclerView = findViewById(R.id.recommended_recycler_view);
+        recommendedRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        List<Book> recommendedBooks = new ArrayList<>();
+        recommendedBooks.add(new Book("Harry Potter", "J.K. Rowling", "Harry Potter y la piedra filosofal es el primer libro de la serie.", 4.9f, "$8.99", R.drawable.harry_potter_piedra));
+        recommendedBooks.add(new Book("Habitos Atomicos", "James Clear", "Un método fácil y comprobado para construir buenos hábitos y romper malos hábitos.", 4.7f, "$12.99", R.drawable.atomic_habits));
+        recommendedBooks.add(new Book("El nombre del viento", "Patrick Rothfuss", "Una historia de aventuras y magia.", 4.6f, "$10.99", R.drawable.el_nombre_del_viento));
+        recommendedBooks.add(new Book("Las Vidas Dentro de tu Cabeza", "David Eagleman", "Una exploración fascinante del cerebro humano.", 4.7f, "$9.99", R.drawable.las_vidas_dentro_de_tu_cabeza));
+
+        BookAdapter recommendedBooksAdapter = new BookAdapter(recommendedBooks, this::openBookDetail);
+        recommendedRecyclerView.setAdapter(recommendedBooksAdapter);
+    }
+
+    private void openBookDetail(Book book) {
+        Intent intent = new Intent(this, BookDetailActivity.class);
+        intent.putExtra("title", book.getTitle());
+        intent.putExtra("author", book.getAuthor());
+        intent.putExtra("description", book.getDescription());
+        intent.putExtra("rating", book.getRating());
+        intent.putExtra("price", book.getPrice());
+        intent.putExtra("coverImage", book.getCoverImage());
+        startActivity(intent);
+    }
+
+    private void setupDrawer() {
+        drawerLayout = findViewById(R.id.drawer_layout);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Si el ActionBarDrawerToggle maneja el evento de clic, retorna true
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-
-        // De lo contrario, deja que el comportamiento predeterminado maneje el evento de clic
         return super.onOptionsItemSelected(item);
     }
 
-private void changeTextColor(ViewGroup viewGroup, int color) {
-    for (int i = 0; i < viewGroup.getChildCount(); i++) {
-        View view = viewGroup.getChildAt(i);
-        if (view instanceof TextView && view.getId() != R.id.greeting) {
-            ((TextView) view).setTextColor(color);
-        } else if (view instanceof ViewGroup) {
-            changeTextColor((ViewGroup) view, color);
+    private void changeTextColor(ViewGroup viewGroup, int color) {
+        for (int i = 0; i < viewGroup.getChildCount(); i++) {
+            View view = viewGroup.getChildAt(i);
+            if (view instanceof TextView && view.getId() != R.id.greeting) {
+                ((TextView) view).setTextColor(color);
+            } else if (view instanceof ViewGroup) {
+                changeTextColor((ViewGroup) view, color);
+            }
         }
     }
-}
-
 }
