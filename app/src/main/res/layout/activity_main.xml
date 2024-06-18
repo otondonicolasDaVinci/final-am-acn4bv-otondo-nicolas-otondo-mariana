@@ -12,15 +12,13 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.Toolbar>
-
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/greeting"
@@ -117,80 +115,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/categories_bar" />
 
-        <LinearLayout
-            android:id="@+id/best_sellers_books_container"
+        <!-- Agregado: RecyclerView para Best Sellers -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/books_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/best_sellers_title">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/best_seller_book1"
-                    android:layout_width="100dp"
-                    android:layout_height="143dp"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginEnd="50dp"
-                    android:src="@drawable/libro1" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/las_vidas_dentro_de_tu_cabeza"
-                    android:textSize="11sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/best_seller_book2"
-                    android:layout_width="100dp"
-                    android:layout_height="143dp"
-                    android:layout_marginEnd="20dp"
-                    android:src="@drawable/libro2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/el_nombre_del_viento"
-                    android:layout_marginEnd="20dp"
-                    android:textSize="11sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/best_seller_book3"
-                    android:layout_width="100dp"
-                    android:layout_height="143dp"
-                    android:src="@drawable/libro3" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/harry_potter_y_la_piedra_filosofal"
-                    android:textSize="11sp" />
-
-            </LinearLayout>
-        </LinearLayout>
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/best_sellers_title"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_book" /> <!-- Asegúrate de tener un layout 'item_book' para los ítems del RecyclerView -->
 
         <TextView
             android:id="@+id/recommended_title"
@@ -202,88 +135,17 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/best_sellers_books_container" />
+            app:layout_constraintTop_toBottomOf="@id/books_recycler_view" />
 
-        <LinearLayout
-            android:id="@+id/recommended_book1_container"
+        <!-- Agregado: RecyclerView para Recomendados para ti -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recommended_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recommended_title">
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/recommended_book1"
-                    android:layout_width="100dp"
-                    android:layout_height="143dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginEnd="30dp"
-                    android:src="@drawable/libro4" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/h_bitos_at_micos"
-                    android:textSize="11sp" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                tools:ignore="UseCompoundDrawables">
-
-                <ImageView
-                    android:id="@+id/recommended_book3"
-                    android:layout_width="100dp"
-                    android:layout_height="143dp"
-                    android:layout_marginEnd="20dp"
-                    android:src="@drawable/libro5" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lo_que_el_viento_se_llev"
-                    android:textSize="11sp" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-
-                <ImageView
-                    android:id="@+id/recommended_book2"
-                    android:layout_width="100dp"
-                    android:layout_height="143dp"
-                    android:src="@drawable/libro1"
-                    android:layout_marginStart="10dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/las_vidas_dentro_de_tu_cabeza"
-                    android:layout_marginStart="5dp"
-                    android:textSize="11sp" />
-
-            </LinearLayout>
-        </LinearLayout>
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/recommended_title"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_book" /> <!-- Asegúrate de tener un layout 'item_book' para los ítems del RecyclerView -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

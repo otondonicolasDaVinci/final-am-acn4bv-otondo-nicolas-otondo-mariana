@@ -16,4 +16,14 @@
     <string name="harry_potter_y_la_piedra_filosofal">Harry Potter y la piedra filosofal</string>
     <string name="h_bitos_at_micos">Hábitos atómicos</string>
     <string name="lo_que_el_viento_se_llev">Lo que el viento se llevó</string>
+
+    <!-- BookDetailActivity Strings -->
+    <string name="agregar_al_carrito">Agregar al carrito</string>
+
+    <!-- BookItem Strings -->
+    <string name="book_cover">Portada del libro</string>
+    <string name="book_title">Book Title</string>
+    <string name="app_name">libros\n</string>
+    <string name="author_name">Author Name</string>
+    <string name="_9_99">$9.99</string>
 </resources>
