@@ -1,4 +1,5 @@
 <resources>
+    <!-- General Strings -->
     <string name="greeting">Hola, %1$s</string>
     <string name="busca_aqui">Busca aquí</string>
     <string name="ciencia_ficci_n_y_fantas_a">Ciencia ficción y Fantasía</string>
@@ -26,4 +27,14 @@
     <string name="app_name">libros\n</string>
     <string name="author_name">Author Name</string>
     <string name="_9_99">$9.99</string>
+
+    <!-- CartItem Strings -->
+    <string name="carrito">Carrito</string>
+    <string name="cart">Carrito</string>
+    <string name="check_out">Comprar</string>
+    <string name="price">precio\n</string>
+    <string name="decrease_quantity">Decrease quantity</string>
+    <string name="increase_quantity">Increase quantity</string>
+    <string name="item_count">Items en el carrito: %1$d</string>
+    <string name="total_price">Total: $%1$.2f</string>
 </resources>
