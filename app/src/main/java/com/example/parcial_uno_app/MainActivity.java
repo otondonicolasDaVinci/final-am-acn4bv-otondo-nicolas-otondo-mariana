@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -61,13 +62,11 @@ public class MainActivity extends AppCompatActivity {
         moonButton.setLayoutParams(layoutParams);
         moonButton.setBackgroundResource(R.drawable.night_mode_moon);
 
-
         //Seteamos ID al boton
         moonButton.setId(View.generateViewId());
 
         // Agrega el Button al ConstraintLayout
         constraintLayout.addView(moonButton);
-
 
         // Define las restricciones del botón para posicionarlo al lado de la barra de búsqueda
         ConstraintSet constraintSet = new ConstraintSet();
@@ -91,18 +90,14 @@ public class MainActivity extends AppCompatActivity {
                 isBackgroundBlack[0] = true;
                 changeTextColor(constraintLayout, Color.WHITE);
             }
-
         });
-
-
-
 
         setupToolbar();
         setupButtons();
         setupRecyclerViews();
         setupDrawer();
+        setupCartButton(); // Agregar configuración para el botón del carrito
     }
-
 
     private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -160,6 +155,20 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 
+    private void setupCartButton() {
+        // Agregar un botón de carrito en la Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        ImageView cartButton = new ImageView(this);
+        cartButton.setImageResource(R.drawable.ic_cart); // Reemplaza con el ícono de carrito que tengas
+        toolbar.addView(cartButton);
+
+        // Configurar el listener del botón del carrito
+        cartButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CartActivity.class);
+            startActivity(intent);
+        });
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
@@ -175,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView) view).setTextColor(color);
             } else if (view instanceof ViewGroup) {
                 changeTextColor((ViewGroup) view, color);
+
             }
         }
     }
