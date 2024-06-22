@@ -2,7 +2,6 @@ package com.example.parcial_uno_app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,7 +16,6 @@ import com.example.parcial_uno_app.model.Book;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class BookDetailActivity extends AppCompatActivity {
 
@@ -67,9 +65,7 @@ public class BookDetailActivity extends AppCompatActivity {
             cart.add(book);
             Toast.makeText(BookDetailActivity.this, "Agregado al carrito", Toast.LENGTH_SHORT).show();
 
-            if (CartActivity.cartAdapter != null) {
-                CartActivity.cartAdapter.notifyDataSetChanged();
-            }
+            // Enviar broadcast para actualizar el carrito
             Intent intentCart = new Intent("cart_updated");
             LocalBroadcastManager.getInstance(BookDetailActivity.this).sendBroadcast(intentCart);
         });

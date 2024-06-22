@@ -1,6 +1,7 @@
 package com.example.parcial_uno_app.model.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.parcial_uno_app.R;
@@ -52,7 +54,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             int newQuantity = quantities.get(position) + 1;
             quantities.put(position, newQuantity);
             holder.bookQuantity.setText(String.valueOf(newQuantity));
-            updateCartSummary();
+            notifyCartChanged();
         });
 
         holder.decreaseButton.setOnClickListener(v -> {
@@ -60,7 +62,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             if (newQuantity > 0) {
                 quantities.put(position, newQuantity);
                 holder.bookQuantity.setText(String.valueOf(newQuantity));
-                updateCartSummary();
+                notifyCartChanged();
             }
         });
     }
@@ -70,17 +72,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         return cartItems.size();
     }
 
-    private void updateCartSummary() {
-        // Lógica para actualizar el resumen del carrito
-        int itemCount = 0;
-        double totalPrice = 0.0;
-
-        for (int i = 0; i < cartItems.size(); i++) {
-            int quantity = quantities.get(i);
-            itemCount += quantity;
-            totalPrice += quantity * Double.parseDouble(cartItems.get(i).getPrice().substring(1));
-        }
-
+    private void notifyCartChanged() {
+        Intent intent = new Intent("cart_updated");
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     public static class CartViewHolder extends RecyclerView.ViewHolder {
@@ -98,5 +92,20 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             increaseButton = itemView.findViewById(R.id.increase_button);
             decreaseButton = itemView.findViewById(R.id.decrease_button);
         }
+    }
+    public int getTotalItemCount() {
+        int totalItemCount = 0;
+        for (int i = 0; i < quantities.size(); i++) {
+            totalItemCount += quantities.get(i);
+        }
+        return totalItemCount;
+    }
+
+    public int getQuantity(Book book) {
+        int index = cartItems.indexOf(book);
+        if (index != -1) {
+            return quantities.get(index);
+        }
+        return 0;
     }
 }

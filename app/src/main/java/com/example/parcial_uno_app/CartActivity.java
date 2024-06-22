@@ -1,5 +1,6 @@
 package com.example.parcial_uno_app;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -60,15 +61,17 @@ public class CartActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    @SuppressLint("DefaultLocale")
     public void updateCartSummary() {
-        int itemCount = MainActivity.cartItems.size();
+        int itemCount = cartAdapter.getTotalItemCount();
         float totalPrice = 0f;
-        for (Book book : MainActivity.cartItems) {
-            String price = book.getPrice().replace("$", "");
-            totalPrice += Float.parseFloat(price);
+
+        for (Book book : BookDetailActivity.getCart()) {
+            int quantity = cartAdapter.getQuantity(book);
+            totalPrice += quantity * Float.parseFloat(book.getPrice().replace("$", ""));
         }
 
         itemCountTextView.setText(getString(R.string.item_count, itemCount));
-        totalPriceTextView.setText(getString(R.string.total_price, totalPrice));
+        totalPriceTextView.setText(getString(R.string.total_price, String.format("%.2f", totalPrice)));
     }
 }

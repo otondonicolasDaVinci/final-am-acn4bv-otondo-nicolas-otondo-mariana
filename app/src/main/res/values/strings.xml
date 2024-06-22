@@ -36,5 +36,6 @@
     <string name="decrease_quantity">Decrease quantity</string>
     <string name="increase_quantity">Increase quantity</string>
     <string name="item_count">Items en el carrito: %1$d</string>
-    <string name="total_price">Total: $%1$.2f</string>
+    <string name="total_price">Total: $%1$s</string>
+    <string name="quantity">quantity</string>
 </resources>

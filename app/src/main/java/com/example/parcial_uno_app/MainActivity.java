@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private RecyclerView booksRecyclerView;
     private RecyclerView recommendedRecyclerView;
-    public static List<Book> cartItems = new ArrayList<>(); // Lista para almacenar los libros agregados al carrito
 
     @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility"})
     @Override
