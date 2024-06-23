@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.parcial_uno_app.model.Book;
 import com.example.parcial_uno_app.model.adapter.CartAdapter;
+import com.example.parcial_uno_app.utils.ThemeUtils;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -28,12 +30,19 @@ public class CartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (ThemeUtils.loadDarkModeState(this)) {
+            setTheme(R.style.DarkTheme);
+        } else {
+            setTheme(R.style.LightTheme);
+        }
         setContentView(R.layout.activity_cart);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         cartRecyclerView = findViewById(R.id.cart_recycler_view);
         cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -45,7 +54,6 @@ public class CartActivity extends AppCompatActivity {
 
         updateCartSummary();
 
-        // Registra un BroadcastReceiver para escuchar los broadcasts de "cart_updated"
         mReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -53,6 +61,15 @@ public class CartActivity extends AppCompatActivity {
             }
         };
         LocalBroadcastManager.getInstance(this).registerReceiver(mReceiver, new IntentFilter("cart_updated"));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

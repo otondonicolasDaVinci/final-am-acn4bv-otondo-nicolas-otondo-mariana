@@ -4,15 +4,13 @@ public class Book {
     private String title;
     private String author;
     private String description;
-    private float rating;
     private String price;
     private int coverImage;
 
-    public Book(String title, String author, String description, float rating, String price, int coverImage) {
+    public Book(String title, String author, String description, String price, int coverImage) {
         this.title = title;
         this.author = author;
         this.description = description;
-        this.rating = rating;
         this.price = price;
         this.coverImage = coverImage;
     }
@@ -27,10 +25,6 @@ public class Book {
 
     public String getDescription() {
         return description;
-    }
-
-    public float getRating() {
-        return rating;
     }
 
     public String getPrice() {

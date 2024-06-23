@@ -2,6 +2,7 @@ package com.example.parcial_uno_app.model.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.parcial_uno_app.R;
 import com.example.parcial_uno_app.model.Book;
+import com.example.parcial_uno_app.utils.ThemeUtils;
 
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         this.cartItems = cartItems;
         this.quantities = new SparseIntArray(cartItems.size());
         for (int i = 0; i < cartItems.size(); i++) {
-            this.quantities.put(i, 1);  // Inicializamos todas las cantidades en 1
+            this.quantities.put(i, 1);
         }
     }
 
@@ -42,6 +44,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
+        updateCartViewHolderTheme(holder);
         Book book = cartItems.get(position);
         holder.bookCover.setImageResource(book.getCoverImage());
         holder.bookTitle.setText(book.getTitle());
@@ -65,6 +68,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 notifyCartChanged();
             }
         });
+
+
     }
 
     @Override
@@ -92,7 +97,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             increaseButton = itemView.findViewById(R.id.increase_button);
             decreaseButton = itemView.findViewById(R.id.decrease_button);
         }
+
     }
+
     public int getTotalItemCount() {
         int totalItemCount = 0;
         for (int i = 0; i < quantities.size(); i++) {
@@ -107,5 +114,23 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             return quantities.get(index);
         }
         return 0;
+    }
+
+    private void updateCartViewHolderTheme(CartViewHolder holder) {
+        if (ThemeUtils.loadDarkModeState(context)) {
+            holder.increaseButton.setColorFilter(Color.WHITE);
+            holder.decreaseButton.setColorFilter(Color.WHITE);
+            holder.bookTitle.setTextColor(Color.WHITE);
+            holder.bookAuthor.setTextColor(Color.WHITE);
+            holder.bookPrice.setTextColor(Color.WHITE);
+            holder.bookQuantity.setTextColor(Color.WHITE);
+        } else {
+            holder.increaseButton.setColorFilter(Color.BLACK);
+            holder.decreaseButton.setColorFilter(Color.BLACK);
+            holder.bookTitle.setTextColor(Color.BLACK);
+            holder.bookAuthor.setTextColor(Color.BLACK);
+            holder.bookPrice.setTextColor(Color.BLACK);
+            holder.bookQuantity.setTextColor(Color.BLACK);
+        }
     }
 }
