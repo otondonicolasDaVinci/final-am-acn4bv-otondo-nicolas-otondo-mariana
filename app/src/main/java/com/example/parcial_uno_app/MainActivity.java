@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         recommendedBooks.add(new Book("Harry Potter", "J.K. Rowling", "Harry Potter y la piedra filosofal es el primer libro de la serie.", "$8.99", R.drawable.harry_potter_piedra));
         recommendedBooks.add(new Book("Habitos Atomicos", "James Clear", "Un método fácil y comprobado para construir buenos hábitos y romper malos hábitos.", "$12.99", R.drawable.atomic_habits));
         recommendedBooks.add(new Book("El nombre del viento", "Patrick Rothfuss", "Una historia de aventuras y magia.", "$10.99", R.drawable.el_nombre_del_viento));
-        recommendedBooks.add(new Book("Deshacer la ansiedad", "David Eagleman", "Una exploración fascinante del cerebro humano.", "$9.99", R.drawable.deshacer_la_ansiedad));
+        recommendedBooks.add(new Book("Deshacer la", "David Eagleman", "Una exploración fascinante del cerebro humano.", "$9.99", R.drawable.deshacer_la_ansiedad));
         recommendedBooks.add(new Book("El Silmarillion", "J.R.R. Tolkien", "El Silmarillion es una recopilación de mitos y leyendas que forman parte de la historia de la Tierra Media.", "$11.99", R.drawable.el_silmarillion));
         BookAdapter recommendedBooksAdapter = new BookAdapter(recommendedBooks, this::openBookDetail);
         recommendedRecyclerView.setAdapter(recommendedBooksAdapter);
