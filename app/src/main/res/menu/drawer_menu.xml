@@ -4,17 +4,6 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/baseline_menu_24"
             android:title="@string/inicio" />
-        <item
-            android:id="@+id/nav_novela"
-            android:title="@string/novela" />
-
-        <item
-            android:id="@+id/nav_autoayuda"
-            android:title="@string/autoayuda" />
-
-        <item
-            android:id="@+id/nav_ciencia_ficcion"
-            android:title="@string/ciencia_ficci_n_y_fantas_a" />
     </group>
     <group android:checkableBehavior="single">
         <item

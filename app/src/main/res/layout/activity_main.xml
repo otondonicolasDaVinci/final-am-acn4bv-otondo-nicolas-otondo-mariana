@@ -63,6 +63,7 @@
             app:layout_constraintTop_toBottomOf="@id/search_bar">
 
             <Button
+                android:id="@+id/inicio_button"
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -73,6 +74,7 @@
                 android:textSize="11sp" />
 
             <Button
+                android:id="@+id/novela_button"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:layout_weight="1"
@@ -83,6 +85,7 @@
                 android:textSize="11sp" />
 
             <Button
+                android:id="@+id/autoayuda_button"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
                 android:layout_weight="1"
@@ -93,6 +96,7 @@
                 android:textSize="10sp" />
 
             <Button
+                android:id="@+id/ciencia_ficcion_button_y_fantasia_button"
                 android:layout_width="102dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -102,6 +106,7 @@
                 android:textColor="@color/black"
                 android:textSize="11sp" />
         </LinearLayout>
+
 
         <TextView
             android:id="@+id/best_sellers_title"

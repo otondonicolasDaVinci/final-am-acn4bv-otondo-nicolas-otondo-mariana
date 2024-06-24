@@ -35,6 +35,7 @@ public class BookDetailActivity extends AppCompatActivity {
         TextView bookAuthor = findViewById(R.id.book_author);
         TextView bookPrice = findViewById(R.id.book_price);
         TextView bookDescription = findViewById(R.id.book_description);
+        TextView bookCategory = findViewById(R.id.book_category);
         Button addToCartButton = findViewById(R.id.add_to_cart_button);
 
         // Obtener datos del Intent
@@ -43,6 +44,7 @@ public class BookDetailActivity extends AppCompatActivity {
         String author = intent.getStringExtra("author");
         String description = intent.getStringExtra("description");
         String price = intent.getStringExtra("price");
+        String category = intent.getStringExtra("category");
         int coverImage = intent.getIntExtra("coverImage", -1);
 
 
@@ -63,7 +65,7 @@ public class BookDetailActivity extends AppCompatActivity {
         }
 
         addToCartButton.setOnClickListener(v -> {
-            Book book = new Book(title, author, description, price, coverImage);
+            Book book = new Book(title, author, description, price, coverImage, category);
             cart.add(book);
             Toast.makeText(BookDetailActivity.this, "Agregado al carrito", Toast.LENGTH_SHORT).show();
 

@@ -38,4 +38,7 @@
     <string name="item_count">Items en el carrito: %1$d</string>
     <string name="total_price">Total: $%1$s</string>
     <string name="quantity">quantity</string>
+    <string name="login">Login</string>
+    <string name="password">password</string>
+    <string name="email">email</string>
 </resources>
