@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "644857126089",
+    "project_id": "parcial-1-am-acn4bv",
+    "storage_bucket": "parcial-1-am-acn4bv.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644857126089:android:efef117a91510003dbc118",
+        "android_client_info": {
+          "package_name": "com.example.parcial_uno_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCjlkrwYobf4DzIvR0BY8bmWhRy-dcTec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

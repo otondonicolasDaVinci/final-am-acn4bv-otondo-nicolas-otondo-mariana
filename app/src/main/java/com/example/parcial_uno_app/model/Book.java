@@ -6,13 +6,15 @@ public class Book {
     private String description;
     private String price;
     private int coverImage;
+    private String category;
 
-    public Book(String title, String author, String description, String price, int coverImage) {
+    public Book(String title, String author, String description, String price, int coverImage, String category) {
         this.title = title;
         this.author = author;
         this.description = description;
         this.price = price;
         this.coverImage = coverImage;
+        this.category = category;
     }
 
     public String getTitle() {
@@ -33,5 +35,13 @@ public class Book {
 
     public int getCoverImage() {
         return coverImage;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
