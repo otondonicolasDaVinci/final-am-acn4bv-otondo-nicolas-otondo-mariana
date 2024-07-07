@@ -1,4 +1,4 @@
-package com.example.parcial_uno_app;
+package com.example.parcial_uno_app.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.example.parcial_uno_app.R;
 import com.example.parcial_uno_app.model.Book;
 import com.example.parcial_uno_app.utils.ThemeUtils;
 

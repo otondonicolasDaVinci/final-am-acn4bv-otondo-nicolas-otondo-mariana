@@ -1,4 +1,4 @@
-package com.example.parcial_uno_app.model.adapter;
+package com.example.parcial_uno_app.view.adapter;
 
 import android.content.Context;
 import android.content.Intent;
