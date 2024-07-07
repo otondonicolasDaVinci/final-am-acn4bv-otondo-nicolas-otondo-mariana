@@ -1,4 +1,4 @@
-package com.example.parcial_uno_app;
+package com.example.parcial_uno_app.view;
 
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
@@ -15,8 +15,9 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.parcial_uno_app.R;
 import com.example.parcial_uno_app.model.Book;
-import com.example.parcial_uno_app.model.adapter.CartAdapter;
+import com.example.parcial_uno_app.view.adapter.CartAdapter;
 import com.example.parcial_uno_app.utils.ThemeUtils;
 
 public class CartActivity extends AppCompatActivity {

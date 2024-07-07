@@ -1,4 +1,4 @@
-package com.example.parcial_uno_app;
+package com.example.parcial_uno_app.view;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -31,18 +31,17 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.parcial_uno_app.R;
 import com.example.parcial_uno_app.model.Book;
-import com.example.parcial_uno_app.model.adapter.BookAdapter;
 import com.example.parcial_uno_app.utils.ThemeUtils;
+import com.example.parcial_uno_app.view.adapter.BookAdapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -55,9 +54,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private List<Book> allRecommendedBooks;
     private List<Book> allBestSellersBooks;
-
-    private List<Book> allBooks;
-
     private FirebaseFirestore db;
 
 
