@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -35,9 +36,13 @@ import com.example.parcial_uno_app.model.adapter.BookAdapter;
 import com.example.parcial_uno_app.utils.ThemeUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -53,12 +58,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private List<Book> allBooks;
 
+    private FirebaseFirestore db;
+
+
     @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        db = FirebaseFirestore.getInstance();
+
+        allRecommendedBooks = new ArrayList<>();
+        allBestSellersBooks = new ArrayList<>();
 
         // Inicializar botones de categorías
         Button inicioButton = findViewById(R.id.inicio_button);
@@ -137,32 +150,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void setupRecyclerViews() {
         booksRecyclerView = findViewById(R.id.books_recycler_view);
         booksRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        List<Book> bestSellers = new ArrayList<>();
-        bestSellers.add(new Book("Deshacer la ansiedad", "Judson Brewer", "Aprende a dominar la ansiedad", "$9.99", R.drawable.deshacer_la_ansiedad, "Autoayuda"));
-        bestSellers.add(new Book("Harry Potter", "J.K. Rowling", "Harry Potter y la piedra filosofal es el primer libro de la serie.", "$8.99", R.drawable.harry_potter_piedra, "Fantasia"));
-        bestSellers.add(new Book("Lo que el viento se llevó", "Margaret Mitchell", "La historia de amor más grande jamás contada.", "$7.99", R.drawable.viento_se_llevo, "Novela"));
-        bestSellers.add(new Book("El nombre del viento", "Patrick Rothfuss", "Una historia de aventuras y magia.", "$10.99", R.drawable.el_nombre_del_viento, "Fantasia"));
-
-        BookAdapter bestSellersAdapter = new BookAdapter(bestSellers, this::openBookDetail);
-        booksRecyclerView.setAdapter(bestSellersAdapter);
 
         recommendedRecyclerView = findViewById(R.id.recommended_recycler_view);
         recommendedRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        List<Book> recommendedBooks = new ArrayList<>();
-        recommendedBooks.add(new Book("Harry Potter", "J.K. Rowling", "Harry Potter y la piedra filosofal es el primer libro de la serie.", "$8.99", R.drawable.harry_potter_piedra, "Fantasia"));
-        recommendedBooks.add(new Book("El Silmarillion", "J.R.R. Tolkien", "El Silmarillion es una recopilación de mitos y leyendas que forman parte de la historia de la Tierra Media.", "$11.99", R.drawable.el_silmarillion, "Fantasia"));
-        recommendedBooks.add(new Book("Habitos Atomicos", "James Clear", "Un método fácil y comprobado para construir buenos hábitos y romper malos hábitos.", "$12.99", R.drawable.atomic_habits, "Autoayuda"));
-        recommendedBooks.add(new Book("El nombre del viento", "Patrick Rothfuss", "Una historia de aventuras y magia.", "$10.99", R.drawable.el_nombre_del_viento, "Fantasia"));
-        recommendedBooks.add(new Book("Deshacer la ansiedad", "David Eagleman", "Una exploración fascinante del cerebro humano.", "$9.99", R.drawable.deshacer_la_ansiedad, "Autoayuda"));
-        recommendedBooks.add(new Book("El Silmarillion", "J.R.R. Tolkien", "El Silmarillion es una recopilación de mitos y leyendas que forman parte de la historia de la Tierra Media.", "$11.99", R.drawable.el_silmarillion, "Fantasia"));
-        BookAdapter recommendedBooksAdapter = new BookAdapter(recommendedBooks, this::openBookDetail);
-        recommendedRecyclerView.setAdapter(recommendedBooksAdapter);
 
-        allRecommendedBooks = new ArrayList<>(recommendedBooks);
-        allBestSellersBooks = new ArrayList<>(bestSellers);
-        allBooks = new ArrayList<>();
-        allBooks.addAll(recommendedBooks);
-        allBooks.addAll(bestSellers);
+        fetchBooksFromFirestore();
+    }
+
+    private void fetchBooksFromFirestore() {
+        db.collection("books")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        List<Book> books = new ArrayList<>();
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            String title = document.getString("title");
+                            String author = document.getString("author");
+                            String description = document.getString("description");
+                            String price = document.getString("price");
+                            int coverImage = document.getLong("coverImage").intValue();
+                            String category = document.getString("category");
+                            books.add(new Book(title, author, description, price, coverImage, category));
+                            Book book = new Book(title, author, description, price, coverImage, category);
+                            allRecommendedBooks.add(book);
+                            allBestSellersBooks.add(book);
+                        }
+                        // Este codigo es para que se muestren los libros en la pantalla principal
+                        BookAdapter bookAdapter = new BookAdapter(books, this::openBookDetail);
+                        booksRecyclerView.setAdapter(bookAdapter);
+                        recommendedRecyclerView.setAdapter(bookAdapter);
+                    } else {
+                        Toast.makeText(MainActivity.this, "Error al obtener los libros", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void openBookDetail(Book book) {
